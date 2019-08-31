@@ -55,7 +55,7 @@ function computeTransformFunctions(options) {
 
 module.exports = function(connect) {
   const Store = connect.Store || connect.session.Store
-  const MemoryStore = connect.MemoryStore || connect.session.MemoryStore
+  const MemoryStore = connect.MemoryStore || (connect.session && connect.session.MemoryStore)
 
   class MongoStore extends Store {
     constructor(options) {
